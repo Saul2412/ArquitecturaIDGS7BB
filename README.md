@@ -49,35 +49,60 @@ This follows N-Layer pattern for good organization.
 - Supabase (extra storage or auth)
 
 ## How to install and run it
+1. Clone the repository
+git clone https://github.com/Saul2412/ArquitecturaIDGS7BB.git
+2. Go to the project folder
+cd ArquitecturaIDGS7BB
+3. Install dependencies
+npm install
+4. Create the .env file
 
-1. Clone the repository  
-   ```bash
-   git clone https://github.com/Saul2412/ArquitecturaIDGS7BB.git
+Create a file called .env in the main folder of the project and add the following variables (replace the values with your real information):
 
-Go to the folderBashcd ArquitecturaIDGS7BB
-Install packagesBashnpm install
-Make a .env file
-Create a file called .env in the main folder.
-Put this inside (change the values with your real info):envPORT=3000
+PORT=3000
 MONGO_URI=your_mongodb_connection_string
 SUPABASE_URL=your_supabase_url
 SUPABASE_KEY=your_supabase_key
-JWT_TOKEN_SECRET=your_secret_keyTip: Create a .env.template file with empty values as example (and add it to the repository):envPORT=
+JWT_TOKEN_SECRET=your_secret_key
+5. Create a .env.template file
+
+It is recommended to create a .env.template file with empty values to use as an example for other developers.
+
+PORT=
 MONGO_URI=
 SUPABASE_URL=
 SUPABASE_KEY=
-JWT_TOKEN_SECRET=Do NOT upload your real .env to GitHub. Add .env to .gitignore.
-Start the serverBashnpm start
+JWT_TOKEN_SECRET=
 
-The API runs at: http://localhost:3000
-You can test it with Thunder Client or Postman.
-Main endpoints
-Auth (login and register):
+Important:
 
-POST /api/auth/register → make new user
-POST /api/auth/login → log in and get token
+Do NOT upload your real .env file to GitHub.
 
-Reports:
+Add .env to your .gitignore file.
 
-POST /api/reports → send a new report (need token)
-GET /api/reports → see all reports (need token)
+6. Start the server
+npm start
+API Information
+
+The API will run at:
+
+http://localhost:3000
+
+You can test the endpoints using:
+
+Postman
+
+Thunder Client
+
+Main Endpoints
+Authentication
+
+POST /api/auth/register → Create a new user
+
+POST /api/auth/login → Login and receive a token
+
+Reports
+
+POST /api/reports → Create a new report (token required)
+
+GET /api/reports → Get all reports (token required)
