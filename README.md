@@ -1,72 +1,61 @@
-UrbanAlert es una **API backend** desarrollada para gestionar reportes de incidentes urbanos. Permite a los usuarios registrarse, iniciar sesión de forma segura y enviar reportes de incidentes (accidentes, emergencias, actividades sospechosas, etc.), los cuales se almacenan en una base de datos MongoDB.
+# UrbanAlert
 
-Este proyecto fue realizado como parte de la materia **Arquitectura de Software** (IDGS7BB).
+Backend API para la gestión de reportes de incidentes urbanos  
+Proyecto desarrollado para la materia **Arquitectura de Software** (IDGS7BB)
 
-## Descripción
+[![Node.js](https://img.shields.io/badge/Node.js-v18+-green)](https://nodejs.org/)
+[![Express](https://img.shields.io/badge/Express-4.x-blue)](https://expressjs.com/)
+[![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-success)](https://www.mongodb.com/)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-Ayuda a los ciudadanos a reportar situaciones de riesgo en la ciudad de manera estructurada y segura.  
-Utiliza una **arquitectura en capas (N-Layer)** con separación clara entre:
+## ¿Qué es UrbanAlert?
 
-- Rutas (routes)
-- Controladores (controllers)
-- Modelos (models)
-- Middlewares
+UrbanAlert es una **API REST** creada para permitir que los ciudadanos reporten incidentes en entornos urbanos (accidentes, emergencias, actividades sospechosas, etc.). Los reportes se almacenan de forma segura y estructurada, ayudando a monitorear y gestionar situaciones de riesgo en la ciudad.
 
-Esto mejora la **mantenibilidad**, **escalabilidad** y organización del código.
+Este proyecto fue desarrollado como parte de la asignatura **Arquitectura de Software**.
 
-### Funcionalidades principales
-- Registro de usuarios
-- Inicio de sesión seguro
-- Envío de reportes de incidentes (protegido con JWT)
-- Consulta de reportes
+## Características principales
+
+- Registro y autenticación segura de usuarios (contraseñas encriptadas con bcrypt)
+- Generación y validación de tokens **JWT** para rutas protegidas
+- Envío de reportes de incidentes por usuarios autenticados
+- Consulta de reportes almacenados
+- Arquitectura en capas (**N-Layer** / Clean Architecture):
+  - Routes
+  - Controllers
+  - Models
+  - Middleware
 
 ## Tecnologías utilizadas
 
-- Node.js
-- Express.js
-- MongoDB + Mongoose
-- JSON Web Token (JWT)
-- bcryptjs (para encriptar contraseñas)
-- dotenv (variables de entorno)
+- **Node.js** + **Express.js**
+- **MongoDB** + **Mongoose**
+- **JWT** (JSON Web Tokens)
+- **bcryptjs** – Encriptación de contraseñas
+- **dotenv** – Variables de entorno
+- **Supabase** (autenticación y/o almacenamiento – según configuración)
 
 ## Instalación y ejecución local
 
-Sigue estos pasos para correr el proyecto en tu máquina:
+### 1. Clonar el repositorio
 
-1. Clona el repositorio  
-   ```bash
-   git clone https://github.com/Saul2412/ArquitecturaIDGS7BB.git
+```bash
+git clone https://github.com/Saul2412/ArquitecturaIDGS7BB.git
 
-Entra a la carpeta del proyectoBashcd ArquitecturaIDGS7BB
-Instala las dependenciasBashnpm install
-Crea un archivo .env en la raíz con el siguiente contenido (cambia los valores según tu configuración):envPORT=3000
-MONGO_URI=mongodb://localhost:27017/urbanalert
-# O usa tu cadena de MongoDB Atlas si lo tienes en la nube:
-# MONGO_URI=mongodb+srv://<usuario>:<contraseña>@<cluster>.mongodb.net/urbanalert?retryWrites=true&w=majority
-JWT_TOKEN_SECRET=tu_clave_secreta_super_larga_y_segura_aquiSi usas Supabase (opcional):envSUPABASE_URL=tu_url_de_supabase
-SUPABASE_KEY=tu_clave_de_supabase
-Inicia el servidorBashnpm start
-
-El servidor arrancará en:
-http://localhost:3000 (o el puerto que hayas configurado).
-Prueba la API con Thunder Client, Postman o cualquier cliente HTTP.
-Endpoints principales
-Autenticación
-
-POST /api/auth/register
-Registra un nuevo usuario (la contraseña se encripta con bcrypt)
-POST /api/auth/login
-Inicia sesión y devuelve un token JWT
-
-Reportes
-(Requieren JWT en el header: Authorization: Bearer <token>)
-
-POST /api/reports
-Crea un nuevo reporte de incidente
-GET /api/reports
-Obtiene la lista de todos los reportes
-
-Autor
-Saúl de Jesús Macías Martínez
-Estudiante de Desarrollo de Software
-Proyecto para la materia Arquitectura de Software
+2. Entrar al directorio del proyecto
+Bashcd ArquitecturaIDGS7BB
+3. Instalar dependencias
+Bashnpm install
+4. Configurar variables de entorno
+Crea un archivo .env en la raíz del proyecto con el siguiente contenido:
+envPORT=3000
+MONGO_URI=your_mongodb_connection_string
+SUPABASE_URL=your_supabase_url
+SUPABASE_KEY=your_supabase_key
+JWT_TOKEN_SECRET=tu_clave_secreta_muy_larga_y_segura
+Importante: Nunca subas el archivo .env al repositorio. Asegúrate de que esté en .gitignore.
+5. Iniciar el servidor
+Bashnpm start
+La API estará disponible en:
+http://localhost:3000
+Recomendamos probar los endpoints con Thunder Client, Postman o Insomnia.
