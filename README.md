@@ -49,24 +49,26 @@ This follows N-Layer pattern for good organization.
 - Supabase (extra storage or auth)
 
 ## How to install and run it
-1. Clone the repository
+Clone the repository
 git clone https://github.com/Saul2412/ArquitecturaIDGS7BB.git
-2. Go to the project folder
-cd ArquitecturaIDGS7BB
-3. Install dependencies
-npm install
-4. Create the .env file
 
-Create a file called .env in the main folder of the project and add the following variables (replace the values with your real information):
+Go to the project folder
+cd ArquitecturaIDGS7BB
+
+Install packages
+npm install
+
+Create a .env file
+
+Create a file called .env in the main folder and add:
 
 PORT=3000
 MONGO_URI=your_mongodb_connection_string
 SUPABASE_URL=your_supabase_url
 SUPABASE_KEY=your_supabase_key
 JWT_TOKEN_SECRET=your_secret_key
-5. Create a .env.template file
 
-It is recommended to create a .env.template file with empty values to use as an example for other developers.
+Tip: Create a .env.template file with empty values as an example
 
 PORT=
 MONGO_URI=
@@ -74,35 +76,26 @@ SUPABASE_URL=
 SUPABASE_KEY=
 JWT_TOKEN_SECRET=
 
-Important:
+Do NOT upload your real .env file to GitHub
 
-Do NOT upload your real .env file to GitHub.
+Add .env to .gitignore
 
-Add .env to your .gitignore file.
-
-6. Start the server
+Start the server
 npm start
-API Information
 
-The API will run at:
-
+The API runs at
 http://localhost:3000
 
-You can test the endpoints using:
+You can test it with Thunder Client or Postman
 
-Postman
+Main endpoints
 
-Thunder Client
+Auth (login and register)
 
-Main Endpoints
-Authentication
-
-POST /api/auth/register → Create a new user
-
-POST /api/auth/login → Login and receive a token
+POST /api/auth/register → create new user
+POST /api/auth/login → login and get token
 
 Reports
 
-POST /api/reports → Create a new report (token required)
-
-GET /api/reports → Get all reports (token required)
+POST /api/reports → create a new report (token required)
+GET /api/reports → get all reports (token required)
