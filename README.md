@@ -1,61 +1,72 @@
 # UrbanAlert
 
-Backend API para la gestión de reportes de incidentes urbanos  
-Proyecto desarrollado para la materia **Arquitectura de Software** (IDGS7BB)
+UrbanAlert is a backend API.  
+It helps people report problems in the city, like accidents, emergencies, or strange activities.  
+The reports go to a database.  
+This project is for a Software Architecture class.
 
-[![Node.js](https://img.shields.io/badge/Node.js-v18+-green)](https://nodejs.org/)
-[![Express](https://img.shields.io/badge/Express-4.x-blue)](https://expressjs.com/)
-[![MongoDB](https://img.shields.io/badge/MongoDB-Atlas-success)](https://www.mongodb.com/)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+## What UrbanAlert does
 
-## ¿Qué es UrbanAlert?
+People can:
+- Register (make a new account)
+- Log in safely
+- Send reports about incidents
+- Use protected parts of the API with a token
 
-UrbanAlert es una **API REST** creada para permitir que los ciudadanos reporten incidentes en entornos urbanos (accidentes, emergencias, actividades sospechosas, etc.). Los reportes se almacenan de forma segura y estructurada, ayudando a monitorear y gestionar situaciones de riesgo en la ciudad.
+The code is organized in layers:
+- routes
+- controllers
+- models
+- middleware
 
-Este proyecto fue desarrollado como parte de la asignatura **Arquitectura de Software**.
+This makes the code easy to read, change, and grow.
 
-## Características principales
+## Technologies used
 
-- Registro y autenticación segura de usuarios (contraseñas encriptadas con bcrypt)
-- Generación y validación de tokens **JWT** para rutas protegidas
-- Envío de reportes de incidentes por usuarios autenticados
-- Consulta de reportes almacenados
-- Arquitectura en capas (**N-Layer** / Clean Architecture):
-  - Routes
-  - Controllers
-  - Models
-  - Middleware
+- Node.js
+- Express.js
+- MongoDB
+- Mongoose
+- JWT (for tokens)
+- bcryptjs (to protect passwords)
+- dotenv (for secret settings)
+- Supabase (extra storage or auth)
 
-## Tecnologías utilizadas
+## How to install and run it
 
-- **Node.js** + **Express.js**
-- **MongoDB** + **Mongoose**
-- **JWT** (JSON Web Tokens)
-- **bcryptjs** – Encriptación de contraseñas
-- **dotenv** – Variables de entorno
-- **Supabase** (autenticación y/o almacenamiento – según configuración)
+1. Clone the repository  
+   git clone https://github.com/Saul2412/ArquitecturaIDGS7BB.git
 
-## Instalación y ejecución local
+2. Go to the folder  
+   cd ArquitecturaIDGS7BB
 
-### 1. Clonar el repositorio
+3. Install packages  
+   npm install
 
-```bash
-git clone https://github.com/Saul2412/ArquitecturaIDGS7BB.git
+4. Make a .env file  
+   Put this inside (change the values):  
+   PORT=3000  
+   MONGO_URI=your_mongodb_connection_string  
+   SUPABASE_URL=your_supabase_url  
+   SUPABASE_KEY=your_supabase_key  
+   JWT_TOKEN_SECRET=your_secret_key
 
-2. Entrar al directorio del proyecto
-Bashcd ArquitecturaIDGS7BB
-3. Instalar dependencias
-Bashnpm install
-4. Configurar variables de entorno
-Crea un archivo .env en la raíz del proyecto con el siguiente contenido:
-envPORT=3000
-MONGO_URI=your_mongodb_connection_string
-SUPABASE_URL=your_supabase_url
-SUPABASE_KEY=your_supabase_key
-JWT_TOKEN_SECRET=tu_clave_secreta_muy_larga_y_segura
-Importante: Nunca subas el archivo .env al repositorio. Asegúrate de que esté en .gitignore.
-5. Iniciar el servidor
-Bashnpm start
-La API estará disponible en:
-http://localhost:3000
-Recomendamos probar los endpoints con Thunder Client, Postman o Insomnia.
+5. Start the server  
+   npm start
+
+The API runs at: http://localhost:3000  
+You can test it with Thunder Client or Postman.
+
+## Main endpoints
+
+Auth (login and register):  
+- POST /api/auth/register → make new user  
+- POST /api/auth/login → log in and get token
+
+Reports:  
+- POST /api/reports → send a new report (need token)  
+- GET /api/reports → see all reports (need token)
+
+## Author
+
+Saúl de Jesús Macías Martínez  
